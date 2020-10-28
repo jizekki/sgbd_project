@@ -1,0 +1,32 @@
+{% extends "html/base.html" %}
+{% load static %}
+{% block content %}
+<div class="mx-3 mb-2 mt-4" id="goTracking">
+  <div class="text-center" style="cursor: auto !important;">
+    <div class="row justify-content-center mb-4 pb-5 pt-4">
+      <div class="col-md-4 mt-2 ar">
+        <div class="card pt-4 profile-card shadowyes">
+          <div class="card-body pt-0">
+            <h5 class="card-title">Modification des données</h5>
+            <hr>
+            <p class="card-text">Ici, il est possible d'ajouter, supprimer ou modifier des données de la base de
+              données.</p>
+            <a href="{% url 'baseModify' %}" class="btn btn-block btn-primary mt-4">Modifier la base</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mt-2 ar">
+        <div class="card pt-4 profile-card shadowyes">
+          <div class="card-body pt-0">
+            <h5 class="card-title">Statistiques</h5>
+            <hr>
+            <p class="card-text">Cette section rassemble des statistiques sur l'état actuel de la base de données.
+            </p>
+            <a href="{% url 'statistics' %}" class="btn btn-block btn-primary mt-4">Afficher les statistiques</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

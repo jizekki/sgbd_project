@@ -1,0 +1,90 @@
+{% extends "html/base.html" %}
+{% load static %}
+{% block content %}
+<div class="mx-3 mb-2 mt-4" id="">
+    <div class="text-center" style="cursor: auto !important;">
+        <div class="row justify-content-center">
+            <div class="col-md-5 card profile-card ">
+                <a href="#" class="btn py-3" id="addNewClubButton">
+                    <h5 class="ar"><i class="fas fa-plus-circle fa-x mx-2"></i>Ajouter une nouvelle rencontre</h5>
+                </a>
+                <div class="form">
+                    <form id="subscriptionForm" action="{% url 'home' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="hiddenBlock" id="formInformationsFields">
+                            <div class="row justify-content-center">
+                                <div class="col">
+                                    <div class="form-group text-left">
+                                        <label class="mr-2 mt-2" for="firstName">Première équipe</label>
+                                        <input type="text" class="form-control" id="firstName" name="firstName"
+                                            placeholder="" required />
+                                    </div>
+                                    <div class="form-group text-left">
+                                        <label class="mr-2 mt-2" for="lastName">Deuxième équipe</label>
+                                        <input type="text" class="form-control" id="lastName" name="lastName"
+                                            placeholder="" required />
+                                    </div>
+                                    <div class="form-group text-left">
+                                        <label class="mr-2 mt-2" for="lastName">Date de rencontre</label>
+                                        <input type="date" class="form-control" id="email" name="email"
+                                            placeholder="ex: 10-11-2020" required />
+                                    </div>
+                                    <div class="form-group text-left">
+                                        <label class="mr-2 mt-2" for="score1">Score de la première équipe</label>
+                                        <input type="number" class="form-control" id="score1" name="score1"
+                                            placeholder="ex: 10" required />
+                                    </div>
+                                    <div class="form-group text-left">
+                                        <label class="mr-2 mt-2" for="score1">Score de la deuxième équipe</label>
+                                        <input type="number" class="form-control" id="score1" name="score1"
+                                            placeholder="ex: 10" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <input type="submit" id="submitForm" name="submitForm" class="btn btn-primary mb-3"
+                                value="Ajouter aux rencontres" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-6 mt-2 ar">
+                <div class="card pt-4 profile-card shadowyes">
+                    <div class="card-body pt-0">
+                        <h5 class="card-title">Liste des rencontres</h5>
+                        <hr>
+                        {% for i in '0123456789'|make_list %}
+                        <div class="btn btn-block btn-primary mt-2 px-2" style="cursor: default;">
+                            <div class="row">
+                                <div class="col-md-1 separator">
+                                    <div href="#" class="text-white text-center">{{i}}</div>
+                                </div>
+                                <div class="col">
+                                    <div href="#" class="text-left">hand-ball-team {{i}}</div>
+                                </div>
+                                <div class="col">
+                                    <div href="#" class="text-white text-center">vs</div>
+                                </div>
+                                <div class="col separator">
+                                    <div href="#" class="text-left">hand-ball-team {{i}}</div>
+                                </div>
+                                <div class="col-md-2 offset-md-1 text-right mr-1">
+                                    <a href="{% url 'rencontre_details' %}"><i
+                                            class="far fa-angle-down text-white mr-2"></i></a>
+                                    <a href="{% url 'rencontre_details' %}"><i
+                                            class="far fa-edit text-white mr-1"></i></a>
+                                    <a href="#"><i class="far fa-trash text-white"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock content %}

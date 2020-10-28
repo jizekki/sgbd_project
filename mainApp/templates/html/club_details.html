@@ -1,0 +1,59 @@
+{% extends "html/base.html" %}
+{% load static %}
+{% block content %}
+<div class="mx-3 mb-2 mt-4" id="">
+    <div class="text-center" style="cursor: auto !important;">
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-6 mt-2 ar">
+                <div class="card pt-4 profile-card shadowyes">
+                    <div class="card-body px-2">
+                        <h5 class="card-title">Modifier les informations de ce club</h5>
+                        <hr>
+                        <div class="form">
+                            <form id="subscriptionForm" action="{% url 'home' %}" method="POST">
+                                {% csrf_token %}
+                                <div class="" id="">
+                                    <div class="row justify-content-center">
+                                        <div class="col">
+                                            <div class="form-group text-left">
+                                                <label class="mr-2 mt-2" for="firstName">Prénom</label>
+                                                <input type="text" class="form-control" id="firstName" name="firstName"
+                                                    placeholder="Prénom de l'étudiant"
+                                                    value="{{ student|get_item:'prenom' }}" required />
+                                            </div>
+                                            <div class="form-group text-left">
+                                                <label class="mr-2 mt-2" for="lastName">Nom</label>
+                                                <input type="text" class="form-control" id="lastName" name="lastName"
+                                                    placeholder="Nom de l'étudiant" value="{{ student|get_item:'nom' }}"
+                                                    required />
+                                            </div>
+                                            <div class="form-group text-left">
+                                                <label class="mr-2 mt-2" for="lastName">Adresse email</label>
+                                                <input type="email" class="form-control" id="email" name="email"
+                                                    placeholder="ex: email.adress@example.com"
+                                                    value="{{ student|get_item:'email' }}" required />
+                                            </div>
+                                            <div class="form-group text-left">
+                                                <label class="mr-2 mt-2" for="phonenumber">Numéro de téléphone</label>
+                                                <input type="tel" class="form-control" id="phoneNumber"
+                                                    name="phoneNumber" placeholder="ex: 0612345678"
+                                                    value="{{ student|get_item:'telephone' }}" required />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <input type="submit" id="submitForm" name="submitForm" class="btn btn-primary mb-3"
+                                        value="Enregistrer les modifications" />
+                                    <a href="{% url 'clubs' %}" class="btn btn-danger mb-3 text-white"
+                                        style="font-weight: bold;">Annuler</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock content %}
